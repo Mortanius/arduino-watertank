@@ -55,12 +55,14 @@ bool isPumpOn = false;
 void turnOnPump() {
   Serial.println("TURNING ON PUMP");
   digitalWrite(PIN_RELAY, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH);
   isPumpOn = true;
 }
 
 void turnOffPump() {
   Serial.println("TURNING OFF PUMP");
   digitalWrite(PIN_RELAY, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
   isPumpOn = false;
 }
 
@@ -124,7 +126,10 @@ void setup() {
   pinMode(PIN_US_TRIGGER, OUTPUT);
   pinMode(PIN_US_ECHO, INPUT);
   pinMode(PIN_RELAY, OUTPUT);
+  digitalWrite(PIN_US_TRIGGER, LOW);
+  pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(PIN_RELAY, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
   Serial.begin(9600);
 }
 
